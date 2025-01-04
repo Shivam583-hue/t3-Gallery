@@ -3,6 +3,9 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import TopNavbar from "./_components/topnav";
 import { type Metadata } from "next";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -17,6 +20,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <NextSSRPlugin
+          routerConfig={extractRouterConfig(ourFileRouter)}
+        />
         <body>
           <TopNavbar />
           {children}
