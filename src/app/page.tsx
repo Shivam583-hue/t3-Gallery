@@ -1,4 +1,6 @@
-import Link from "next/link";
+import { db } from "~/server/db";
+
+export const dynamic = "force-dynamic";
 
 const mockUrls = [
   "https://utfs.io/f/JlVSqIfB1I6EKypnvMaQ2UbQrN5fXkocSuzaB9tP48piEdYI",
@@ -9,7 +11,9 @@ const mockImages = mockUrls.map((url, index) => ({
   url,
 }));
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
+  console.log(posts);
   return (
     <main className="min-h-screen bg-black">
       <div className="flex flex-wrap gap-4">
