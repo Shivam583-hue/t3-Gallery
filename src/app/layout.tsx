@@ -1,7 +1,7 @@
+import "@uploadthing/react/styles.css";
 import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import TopNavbar from "./_components/topnav";
-import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${GeistSans.variable}`}>
+      <html lang="en">
         <body>
           <TopNavbar />
           {children}
