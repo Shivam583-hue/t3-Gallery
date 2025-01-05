@@ -1,7 +1,7 @@
 import { SignInButton, SignedIn, UserButton } from "@clerk/nextjs";
 
 import { SignedOut } from "@clerk/nextjs";
-import Button from "./button";
+import { SimpleUploadButton } from "./button";
 
 export default function TopNavbar() {
   return (
@@ -13,7 +13,7 @@ export default function TopNavbar() {
         </SignedOut>
         <SignedIn>
           <div className="flex gap-5">
-            <Button />
+            <SimpleUploadButton />
             <UserButton />
           </div>
         </SignedIn>
