@@ -28,8 +28,10 @@ export default function RootLayout({
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
         <body>
-          <TopNavbar />
-          {children}
+          <div className="h-screen grid grid-rows-[auto_1fr] overflow-hidden">
+            <TopNavbar />
+            <main className="overflow-y-scroll">{children}</main>
+          </div>
           {modal}
           <div id="modal-root" />
         </body>
