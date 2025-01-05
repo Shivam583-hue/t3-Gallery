@@ -6,10 +6,11 @@ export const dynamic = "force-dynamic";
 
 async function Images() {
 
-  const images = getImages()
+  const images = await getImages()
+  console.log("images", images);
   return (
     <div className="flex flex-wrap gap-4">
-      {[...images].map((image) => (
+      {images.map((image) => (
         <div key={image.id} className="w-64 h-64 bg-white">
           <img src={image.url} alt={image.name} />
         </div>
