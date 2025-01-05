@@ -1,18 +1,21 @@
 import { SignedOut } from "@clerk/nextjs";
 import { SignedIn } from "@clerk/nextjs";
-import { getImages } from "~/server/queries";
+import Link from "next/link";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 async function Images() {
 
-  const images = await getImages()
+  const images = await getMyImages()
   console.log("images", images);
   return (
     <div className="flex flex-wrap gap-4">
       {images.map((image) => (
         <div key={image.id} className="w-64 h-64 bg-white">
-          <img src={image.url} alt={image.name} />
+          <Link href={`/img/${image.id}`}>
+            <img src={image.url} alt={image.name} />
+          </Link>
         </div>
       ))}
     </div>
